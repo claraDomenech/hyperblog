@@ -1,0 +1,189 @@
+================
+Comandos Basicos
+================
+git init 
+//inicializa el repositorio de git
+
+git add <nombreArchivo>
+
+git commit -m "" 
+//Agrega definitivamente los cambios hechos al repositorio, se puede poner un comentario para indicar que cambió
+
+git add .
+//Agrega todos los cambios en todos los archivos al área de staging
+
+git status 
+//Para ver el estado de la BD sí se han hecho cambios, pero no se han agregado, ahí saldrá
+
+
+
+
+git push 
+//envía los cambios al repositorio remoto
+
+git pull 
+//Agrega los cambios del commit más nuevo al repositorio local
+
+
+
+=================
+Estructura de Git
+=================
+Disco       -> staging      -> repository
+guardado    add             commit
+
+
+
+===========================
+Ver informacion del archivo
+===========================
+git show <file>
+//Muestra todos los cambios que han existido sobre los ultimos dos commits
+//el <file> es opcional
+
+git log <file>
+//muestra los cambios que ha tenido el archivo en históricos
+//el <file> es opcional
+
+git log --stat <file>
+// muesta los cambios que ha tenido a nivel de bit
+//el <file> es opcional
+
+git diff <idCommitViejo> <idCommitNuevo>
+//mostrar las diferencias de un comit y otro
+
+
+
+==============
+RM  de cambios
+==============
+//Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones.
+git rm --cached <file> 
+//to unstage. cached es que esta en memoria ram, por lo que lo quita de la memoria RAM
+//Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro.
+
+git restore --staged <file>
+//podemos deshacer o restaurar los cambios 
+//ahora hemos restablecido la comunicación y GIT puede ayudarnos con el archivo 
+//porque esta tracked, pero NO esta en la zona staging
+
+git restore <file>
+//y el archivo editado volverá a ser el original
+
+git rm --force <file> 
+//Elimina los archivos de Git y del disco duro. 
+//Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, 
+//de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
+
+
+
+================
+RESET de cambios
+================
+//Con git reset volvemos al pasado sin la posibilidad de volver al futuro. 
+//Borramos la historia y la debemos sobreescribir. No hay vuelta atrás.
+
+git reset <idCommit> --hard
+//nos permite volver a una version borrando toda la información que 
+//tengamos en el área de staging y de los commit 
+
+git reset <idCommit> --soft
+//nos permite volver a una version anterior dejando en staging 
+//lo que teniamos para subirlo a un nuevo commit
+
+git reset HEAD
+//Este es el comando para sacar archivos del área de Staging. 
+
+
+========================
+utilizacion de CHECKCOUT
+========================
+//Esta también es la forma de movernos entre las ramas.
+
+git checkout <idCommit>
+//nos permite viajar en el tiempo a esa version del 
+
+
+
+=====================
+utilizacion de BRANCH
+=====================
+//HEAD representan la rama y el commit de esa rama donde estamos trabajando.
+git branch <rama>
+// crea una nueva rama
+
+git checkout <rama>
+//me muevo a la nueva rama
+
+git merge <rama>
+//permite unir una rama con el master
+
+git branch -v
+//para ver la ultima confirmacion de cambios de cada branch
+
+git branch --merged
+// ver las ramas que se han fusionado con la rama activa
+
+git branch --no-merged
+// ver las ramas que NO se han fusionado con la rama activa
+
+git branch -D
+//Permite borrar la rama, forzando el borrado incluso si se tiene trabajo
+//sin fusionar. Se pierde todo.
+
+git branch -l
+//lista los branch del proyecto, incluso indica donde esta parado
+
+
+
+
+=================================
+git utilizando repositorio REMOTO
+=================================
+git clone <urlDelServidorRemoto>
+//Nos permite descargar los archivos de la última versión de la rama principal y todo el 
+//historial de cambios en la carpeta .git.
+
+git push
+//Luego de hacer git add y git commit debemos ejecutar este comando para mandar 
+//los cambios al servidor remoto.
+
+git fetch 
+//Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro 
+//repositorio local (en caso de que hayan, por supuesto).
+
+git merge 
+//También usamos el comando git fetch con servidores remotos. 
+//Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
+
+git pull
+//Básicamente, git fetch y git merge al mismo tiempo.
+
+
+==============
+configurar git
+==============
+git config
+
+git config --list
+// muestra la lista de configuraciones que tiene el git
+
+git config --list --show-origin
+//muestra la ruta de tosodo los archivos de configuracion del git
+
+git config --global user.email "tu@email.com"
+git config --global user.name "Tu Nombre"
+
+
+
+=========
+manejo VIM
+=========
+teclas esc,  control,  zz
+//editor vim guardar y salir
+tecla esc, i
+//teclas de insertar
+
+tecla Esc,  :wq,  Enter
+// :w = escribir o cuardar
+// :q = Guardar o salir
